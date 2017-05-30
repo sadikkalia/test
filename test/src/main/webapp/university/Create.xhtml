@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UniversityCreateDlg" widgetVar="UniversityCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUniversityTitle}">
+            <h:form id="UniversityCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{universityController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUniversityLabel_universityId}" for="universityId" />
+                        <p:inputText id="universityId" value="#{universityController.selected.universityId}" title="#{bundle.CreateUniversityTitle_universityId}" required="true" requiredMessage="#{bundle.CreateUniversityRequiredMessage_universityId}"/>
+                        <p:outputLabel value="#{bundle.CreateUniversityLabel_universityName}" for="universityName" />
+                        <p:inputText id="universityName" value="#{universityController.selected.universityName}" title="#{bundle.CreateUniversityTitle_universityName}" />
+                        <p:outputLabel value="#{bundle.CreateUniversityLabel_deleted}" for="deleted" />
+                        <p:inputText id="deleted" value="#{universityController.selected.deleted}" title="#{bundle.CreateUniversityTitle_deleted}" />
+                        <p:outputLabel value="#{bundle.CreateUniversityLabel_systemDate}" for="systemDate" />
+                        <p:calendar id="systemDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{universityController.selected.systemDate}" title="#{bundle.EditUniversityTitle_systemDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateUniversityLabel_idUserCreated}" for="idUserCreated" />
+                        <p:selectOneMenu id="idUserCreated" value="#{universityController.selected.idUserCreated}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="idUserCreatedItem"
+                                           itemValue="#{idUserCreatedItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{universityController.create}" value="#{bundle.Save}" update="display,:UniversityListForm:datalist,:growl" oncomplete="handleSubmit(args,'UniversityCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UniversityCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

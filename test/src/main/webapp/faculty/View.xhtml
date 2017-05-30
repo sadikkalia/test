@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacultyViewDlg" widgetVar="FacultyViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFacultyTitle}">
+            <h:form id="FacultyViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facultyController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFacultyLabel_facultyId}"/>
+                        <h:outputText value="#{facultyController.selected.facultyId}" title="#{bundle.ViewFacultyTitle_facultyId}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_facultyName}"/>
+                        <h:outputText value="#{facultyController.selected.facultyName}" title="#{bundle.ViewFacultyTitle_facultyName}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_description}"/>
+                        <h:outputText value="#{facultyController.selected.description}" title="#{bundle.ViewFacultyTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_deleted}"/>
+                        <h:outputText value="#{facultyController.selected.deleted}" title="#{bundle.ViewFacultyTitle_deleted}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_idUserCreated}"/>
+                        <h:outputText value="#{facultyController.selected.idUserCreated}" title="#{bundle.ViewFacultyTitle_idUserCreated}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_systemDate}"/>
+                        <h:outputText value="#{facultyController.selected.systemDate}" title="#{bundle.ViewFacultyTitle_systemDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_idDean}"/>
+                        <h:outputText value="#{facultyController.selected.idDean}" title="#{bundle.ViewFacultyTitle_idDean}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_idViceDean}"/>
+                        <h:outputText value="#{facultyController.selected.idViceDean}" title="#{bundle.ViewFacultyTitle_idViceDean}"/>
+                        <h:outputText value="#{bundle.ViewFacultyLabel_idUniversity}"/>
+                        <h:outputText value="#{facultyController.selected.idUniversity}" title="#{bundle.ViewFacultyTitle_idUniversity}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FacultyViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

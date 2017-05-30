@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReportViewDlg" widgetVar="ReportViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewReportTitle}">
+            <h:form id="ReportViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reportController.selected != null}">
+                        <h:outputText value="#{bundle.ViewReportLabel_reportId}"/>
+                        <h:outputText value="#{reportController.selected.reportId}" title="#{bundle.ViewReportTitle_reportId}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_reportDescription}"/>
+                        <h:outputText value="#{reportController.selected.reportDescription}" title="#{bundle.ViewReportTitle_reportDescription}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_reportTitle}"/>
+                        <h:outputText value="#{reportController.selected.reportTitle}" title="#{bundle.ViewReportTitle_reportTitle}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_reportClass}"/>
+                        <h:outputText value="#{reportController.selected.reportClass}" title="#{bundle.ViewReportTitle_reportClass}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_reportAuthor}"/>
+                        <h:outputText value="#{reportController.selected.reportAuthor}" title="#{bundle.ViewReportTitle_reportAuthor}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_reportDate}"/>
+                        <h:outputText value="#{reportController.selected.reportDate}" title="#{bundle.ViewReportTitle_reportDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewReportLabel_idModule}"/>
+                        <h:outputText value="#{reportController.selected.idModule}" title="#{bundle.ViewReportTitle_idModule}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_active}"/>
+                        <p:selectBooleanCheckbox value="#{reportController.selected.active}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_posInGroup}"/>
+                        <h:outputText value="#{reportController.selected.posInGroup}" title="#{bundle.ViewReportTitle_posInGroup}"/>
+                        <h:outputText value="#{bundle.ViewReportLabel_idReport}"/>
+                        <h:outputText value="#{reportController.selected.idReport}" title="#{bundle.ViewReportTitle_idReport}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ReportViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

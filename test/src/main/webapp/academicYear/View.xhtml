@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AcademicYearViewDlg" widgetVar="AcademicYearViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAcademicYearTitle}">
+            <h:form id="AcademicYearViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{academicYearController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_academicYearId}"/>
+                        <h:outputText value="#{academicYearController.selected.academicYearId}" title="#{bundle.ViewAcademicYearTitle_academicYearId}"/>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_dateFrom}"/>
+                        <h:outputText value="#{academicYearController.selected.dateFrom}" title="#{bundle.ViewAcademicYearTitle_dateFrom}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_dateTo}"/>
+                        <h:outputText value="#{academicYearController.selected.dateTo}" title="#{bundle.ViewAcademicYearTitle_dateTo}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_deleted}"/>
+                        <h:outputText value="#{academicYearController.selected.deleted}" title="#{bundle.ViewAcademicYearTitle_deleted}"/>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_description}"/>
+                        <h:outputText value="#{academicYearController.selected.description}" title="#{bundle.ViewAcademicYearTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_systemDate}"/>
+                        <h:outputText value="#{academicYearController.selected.systemDate}" title="#{bundle.ViewAcademicYearTitle_systemDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAcademicYearLabel_idUserCreated}"/>
+                        <h:outputText value="#{academicYearController.selected.idUserCreated}" title="#{bundle.ViewAcademicYearTitle_idUserCreated}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AcademicYearViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

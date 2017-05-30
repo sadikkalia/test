@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SemesterViewDlg" widgetVar="SemesterViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSemesterTitle}">
+            <h:form id="SemesterViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{semesterController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSemesterLabel_semesterId}"/>
+                        <h:outputText value="#{semesterController.selected.semesterId}" title="#{bundle.ViewSemesterTitle_semesterId}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_semesterName}"/>
+                        <h:outputText value="#{semesterController.selected.semesterName}" title="#{bundle.ViewSemesterTitle_semesterName}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_description}"/>
+                        <h:outputText value="#{semesterController.selected.description}" title="#{bundle.ViewSemesterTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_dateFrom}"/>
+                        <h:outputText value="#{semesterController.selected.dateFrom}" title="#{bundle.ViewSemesterTitle_dateFrom}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_dateTo}"/>
+                        <h:outputText value="#{semesterController.selected.dateTo}" title="#{bundle.ViewSemesterTitle_dateTo}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_deleted}"/>
+                        <h:outputText value="#{semesterController.selected.deleted}" title="#{bundle.ViewSemesterTitle_deleted}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_systemDate}"/>
+                        <h:outputText value="#{semesterController.selected.systemDate}" title="#{bundle.ViewSemesterTitle_systemDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_semesterOrder}"/>
+                        <h:outputText value="#{semesterController.selected.semesterOrder}" title="#{bundle.ViewSemesterTitle_semesterOrder}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_idAcademicYear}"/>
+                        <h:outputText value="#{semesterController.selected.idAcademicYear}" title="#{bundle.ViewSemesterTitle_idAcademicYear}"/>
+                        <h:outputText value="#{bundle.ViewSemesterLabel_idUserCreated}"/>
+                        <h:outputText value="#{semesterController.selected.idUserCreated}" title="#{bundle.ViewSemesterTitle_idUserCreated}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SemesterViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

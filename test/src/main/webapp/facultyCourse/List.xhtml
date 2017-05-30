@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFacultyCourseTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="FacultyCourseListForm">
+                <p:panel header="#{bundle.ListFacultyCourseTitle}">
+                    <p:dataTable id="datalist" value="#{facultyCourseController.items}" var="item"
+                                 selectionMode="single" selection="#{facultyCourseController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.facultyCourseId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_facultyCourseId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.facultyCourseId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_deleted}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deleted}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_systemDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.systemDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_credits}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.credits}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_idCourse}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCourse}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_idFaculty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFaculty}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFacultyCourseTitle_idUserCreated}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUserCreated}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{facultyCourseController.prepareCreate}" update=":FacultyCourseCreateForm" oncomplete="PF('FacultyCourseCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FacultyCourseViewForm" oncomplete="PF('FacultyCourseViewDialog').show()" disabled="#{empty facultyCourseController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FacultyCourseEditForm" oncomplete="PF('FacultyCourseEditDialog').show()" disabled="#{empty facultyCourseController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{facultyCourseController.destroy}" update=":growl,datalist" disabled="#{empty facultyCourseController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

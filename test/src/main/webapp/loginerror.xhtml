@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateerror.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Login Error" />
+	</ui:define>
+
+
+	<ui:define name="body">
+		<div class="Container100 BordBottom GrayBack loginback">
+			<div class="EmptyBox50"></div>
+
+			<div class="Wid90 MarAuto">
+				<div class="Wid30 DispBlock MarAuto WidAutoOnMobile">
+					<div class="Card TexAlCenter" style="margin-bottom: -100px;">
+						<div class="Card SoftGrayBack">
+							<div class="EmptyBox20"></div>
+							<i class="icon-cord DispBlock Fs100 Orange"></i>
+							<div class="EmptyBox40"></div>
+							<div class="Wid80 Fs30 FontAdamantiumBold Orange MarAuto">Invalid user name or password!</div>
+							<div class="EmptyBox10"></div>
+							<div class="Wid80 Fs18 FontAdamantiumRegular Fnone MarAuto">Please enter a user name or password that is
+								authorized to access this application.</div>
+							<h:outputText value="#{session.lastAccessedTime}">
+								<f:convertDateTime pattern="MM/dd/yyyy hh:ss" type="datetime" />
+							</h:outputText>
+						</div>
+						<div class="Separator"></div>
+						<p:button value="Back To Login" icon="fa fa-sign-in" outcome="login" styleClass="OrangeButton" />
+					</div>
+				</div>
+			</div>
+
+			<div class="EmptyBox10"></div>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

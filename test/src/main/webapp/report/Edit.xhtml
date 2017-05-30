@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReportEditDlg" widgetVar="ReportEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReportTitle}">
+            <h:form id="ReportEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reportController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportId}" for="reportId" />
+                        <p:inputText id="reportId" value="#{reportController.selected.reportId}" title="#{bundle.EditReportTitle_reportId}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportId}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportDescription}" for="reportDescription" />
+                        <p:inputText id="reportDescription" value="#{reportController.selected.reportDescription}" title="#{bundle.EditReportTitle_reportDescription}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportDescription}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportTitle}" for="reportTitle" />
+                        <p:inputText id="reportTitle" value="#{reportController.selected.reportTitle}" title="#{bundle.EditReportTitle_reportTitle}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportTitle}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportClass}" for="reportClass" />
+                        <p:inputText id="reportClass" value="#{reportController.selected.reportClass}" title="#{bundle.EditReportTitle_reportClass}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportClass}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportAuthor}" for="reportAuthor" />
+                        <p:inputText id="reportAuthor" value="#{reportController.selected.reportAuthor}" title="#{bundle.EditReportTitle_reportAuthor}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportAuthor}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_reportDate}" for="reportDate" />
+                        <p:calendar id="reportDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{reportController.selected.reportDate}" title="#{bundle.EditReportTitle_reportDate}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_reportDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_idModule}" for="idModule" />
+                        <p:inputText id="idModule" value="#{reportController.selected.idModule}" title="#{bundle.EditReportTitle_idModule}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_idModule}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_active}" for="active" />
+                        <p:selectBooleanCheckbox id="active" value="#{reportController.selected.active}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_active}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_posInGroup}" for="posInGroup" />
+                        <p:inputText id="posInGroup" value="#{reportController.selected.posInGroup}" title="#{bundle.EditReportTitle_posInGroup}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_posInGroup}"/>
+                        <p:outputLabel value="#{bundle.EditReportLabel_idReport}" for="idReport" />
+                        <p:inputText id="idReport" value="#{reportController.selected.idReport}" title="#{bundle.EditReportTitle_idReport}" required="true" requiredMessage="#{bundle.EditReportRequiredMessage_idReport}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reportController.update}" value="#{bundle.Save}" update="display,:ReportListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReportEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReportEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

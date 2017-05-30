@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacultyEditDlg" widgetVar="FacultyEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFacultyTitle}">
+            <h:form id="FacultyEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facultyController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_facultyId}" for="facultyId" />
+                        <p:inputText id="facultyId" value="#{facultyController.selected.facultyId}" title="#{bundle.EditFacultyTitle_facultyId}" required="true" requiredMessage="#{bundle.EditFacultyRequiredMessage_facultyId}"/>
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_facultyName}" for="facultyName" />
+                        <p:inputText id="facultyName" value="#{facultyController.selected.facultyName}" title="#{bundle.EditFacultyTitle_facultyName}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{facultyController.selected.description}" title="#{bundle.EditFacultyTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_deleted}" for="deleted" />
+                        <p:inputText id="deleted" value="#{facultyController.selected.deleted}" title="#{bundle.EditFacultyTitle_deleted}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_idUserCreated}" for="idUserCreated" />
+                        <p:inputText id="idUserCreated" value="#{facultyController.selected.idUserCreated}" title="#{bundle.EditFacultyTitle_idUserCreated}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_systemDate}" for="systemDate" />
+                        <p:calendar id="systemDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{facultyController.selected.systemDate}" title="#{bundle.EditFacultyTitle_systemDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_idDean}" for="idDean" />
+                        <p:inputText id="idDean" value="#{facultyController.selected.idDean}" title="#{bundle.EditFacultyTitle_idDean}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_idViceDean}" for="idViceDean" />
+                        <p:inputText id="idViceDean" value="#{facultyController.selected.idViceDean}" title="#{bundle.EditFacultyTitle_idViceDean}" />
+                        <p:outputLabel value="#{bundle.EditFacultyLabel_idUniversity}" for="idUniversity" />
+                        <p:selectOneMenu id="idUniversity" value="#{facultyController.selected.idUniversity}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{universityController.itemsAvailableSelectOne}"
+                                           var="idUniversityItem"
+                                           itemValue="#{idUniversityItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{facultyController.update}" value="#{bundle.Save}" update="display,:FacultyListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FacultyEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FacultyEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

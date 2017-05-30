@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamSeasonViewDlg" widgetVar="ExamSeasonViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewExamSeasonTitle}">
+            <h:form id="ExamSeasonViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examSeasonController.selected != null}">
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_examSeasonId}"/>
+                        <h:outputText value="#{examSeasonController.selected.examSeasonId}" title="#{bundle.ViewExamSeasonTitle_examSeasonId}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_seasonName}"/>
+                        <h:outputText value="#{examSeasonController.selected.seasonName}" title="#{bundle.ViewExamSeasonTitle_seasonName}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_dateFrom}"/>
+                        <h:outputText value="#{examSeasonController.selected.dateFrom}" title="#{bundle.ViewExamSeasonTitle_dateFrom}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_dateTo}"/>
+                        <h:outputText value="#{examSeasonController.selected.dateTo}" title="#{bundle.ViewExamSeasonTitle_dateTo}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_description}"/>
+                        <h:outputText value="#{examSeasonController.selected.description}" title="#{bundle.ViewExamSeasonTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_deleted}"/>
+                        <h:outputText value="#{examSeasonController.selected.deleted}" title="#{bundle.ViewExamSeasonTitle_deleted}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_isRegular}"/>
+                        <h:outputText value="#{examSeasonController.selected.isRegular}" title="#{bundle.ViewExamSeasonTitle_isRegular}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_systemDate}"/>
+                        <h:outputText value="#{examSeasonController.selected.systemDate}" title="#{bundle.ViewExamSeasonTitle_systemDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_idAcademicYear}"/>
+                        <h:outputText value="#{examSeasonController.selected.idAcademicYear}" title="#{bundle.ViewExamSeasonTitle_idAcademicYear}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_idSemester}"/>
+                        <h:outputText value="#{examSeasonController.selected.idSemester}" title="#{bundle.ViewExamSeasonTitle_idSemester}"/>
+                        <h:outputText value="#{bundle.ViewExamSeasonLabel_idUserCreated}"/>
+                        <h:outputText value="#{examSeasonController.selected.idUserCreated}" title="#{bundle.ViewExamSeasonTitle_idUserCreated}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ExamSeasonViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

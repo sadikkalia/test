@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamSeasonCreateDlg" widgetVar="ExamSeasonCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateExamSeasonTitle}">
+            <h:form id="ExamSeasonCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examSeasonController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_examSeasonId}" for="examSeasonId" />
+                        <p:inputText id="examSeasonId" value="#{examSeasonController.selected.examSeasonId}" title="#{bundle.CreateExamSeasonTitle_examSeasonId}" required="true" requiredMessage="#{bundle.CreateExamSeasonRequiredMessage_examSeasonId}"/>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_seasonName}" for="seasonName" />
+                        <p:inputText id="seasonName" value="#{examSeasonController.selected.seasonName}" title="#{bundle.CreateExamSeasonTitle_seasonName}" />
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_dateFrom}" for="dateFrom" />
+                        <p:calendar id="dateFrom" pattern="MM/dd/yyyy HH:mm:ss" value="#{examSeasonController.selected.dateFrom}" title="#{bundle.EditExamSeasonTitle_dateFrom}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_dateTo}" for="dateTo" />
+                        <p:calendar id="dateTo" pattern="MM/dd/yyyy HH:mm:ss" value="#{examSeasonController.selected.dateTo}" title="#{bundle.EditExamSeasonTitle_dateTo}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{examSeasonController.selected.description}" title="#{bundle.CreateExamSeasonTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_deleted}" for="deleted" />
+                        <p:inputText id="deleted" value="#{examSeasonController.selected.deleted}" title="#{bundle.CreateExamSeasonTitle_deleted}" />
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_isRegular}" for="isRegular" />
+                        <p:inputText id="isRegular" value="#{examSeasonController.selected.isRegular}" title="#{bundle.CreateExamSeasonTitle_isRegular}" />
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_systemDate}" for="systemDate" />
+                        <p:calendar id="systemDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{examSeasonController.selected.systemDate}" title="#{bundle.EditExamSeasonTitle_systemDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_idAcademicYear}" for="idAcademicYear" />
+                        <p:selectOneMenu id="idAcademicYear" value="#{examSeasonController.selected.idAcademicYear}" >
+                            <f:selectItems value="#{academicYearController.itemsAvailableSelectOne}"
+                                           var="idAcademicYearItem"
+                                           itemValue="#{idAcademicYearItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_idSemester}" for="idSemester" />
+                        <p:selectOneMenu id="idSemester" value="#{examSeasonController.selected.idSemester}" >
+                            <f:selectItems value="#{semesterController.itemsAvailableSelectOne}"
+                                           var="idSemesterItem"
+                                           itemValue="#{idSemesterItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateExamSeasonLabel_idUserCreated}" for="idUserCreated" />
+                        <p:selectOneMenu id="idUserCreated" value="#{examSeasonController.selected.idUserCreated}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="idUserCreatedItem"
+                                           itemValue="#{idUserCreatedItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{examSeasonController.create}" value="#{bundle.Save}" update="display,:ExamSeasonListForm:datalist,:growl" oncomplete="handleSubmit(args,'ExamSeasonCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExamSeasonCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

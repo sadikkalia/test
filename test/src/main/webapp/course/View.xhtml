@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CourseViewDlg" widgetVar="CourseViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCourseTitle}">
+            <h:form id="CourseViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{courseController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCourseLabel_courseId}"/>
+                        <h:outputText value="#{courseController.selected.courseId}" title="#{bundle.ViewCourseTitle_courseId}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_courseName}"/>
+                        <h:outputText value="#{courseController.selected.courseName}" title="#{bundle.ViewCourseTitle_courseName}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_description}"/>
+                        <h:outputText value="#{courseController.selected.description}" title="#{bundle.ViewCourseTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_deleted}"/>
+                        <h:outputText value="#{courseController.selected.deleted}" title="#{bundle.ViewCourseTitle_deleted}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_credits}"/>
+                        <h:outputText value="#{courseController.selected.credits}" title="#{bundle.ViewCourseTitle_credits}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_systemDate}"/>
+                        <h:outputText value="#{courseController.selected.systemDate}" title="#{bundle.ViewCourseTitle_systemDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCourseLabel_idFaculty}"/>
+                        <h:outputText value="#{courseController.selected.idFaculty}" title="#{bundle.ViewCourseTitle_idFaculty}"/>
+                        <h:outputText value="#{bundle.ViewCourseLabel_idUserCreated}"/>
+                        <h:outputText value="#{courseController.selected.idUserCreated}" title="#{bundle.ViewCourseTitle_idUserCreated}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CourseViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

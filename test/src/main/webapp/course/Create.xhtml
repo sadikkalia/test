@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CourseCreateDlg" widgetVar="CourseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCourseTitle}">
+            <h:form id="CourseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{courseController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_courseId}" for="courseId" />
+                        <p:inputText id="courseId" value="#{courseController.selected.courseId}" title="#{bundle.CreateCourseTitle_courseId}" required="true" requiredMessage="#{bundle.CreateCourseRequiredMessage_courseId}"/>
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_courseName}" for="courseName" />
+                        <p:inputText id="courseName" value="#{courseController.selected.courseName}" title="#{bundle.CreateCourseTitle_courseName}" />
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{courseController.selected.description}" title="#{bundle.CreateCourseTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_deleted}" for="deleted" />
+                        <p:inputText id="deleted" value="#{courseController.selected.deleted}" title="#{bundle.CreateCourseTitle_deleted}" />
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_credits}" for="credits" />
+                        <p:inputText id="credits" value="#{courseController.selected.credits}" title="#{bundle.CreateCourseTitle_credits}" />
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_systemDate}" for="systemDate" />
+                        <p:calendar id="systemDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{courseController.selected.systemDate}" title="#{bundle.EditCourseTitle_systemDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_idFaculty}" for="idFaculty" />
+                        <p:selectOneMenu id="idFaculty" value="#{courseController.selected.idFaculty}" >
+                            <f:selectItems value="#{facultyController.itemsAvailableSelectOne}"
+                                           var="idFacultyItem"
+                                           itemValue="#{idFacultyItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCourseLabel_idUserCreated}" for="idUserCreated" />
+                        <p:selectOneMenu id="idUserCreated" value="#{courseController.selected.idUserCreated}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="idUserCreatedItem"
+                                           itemValue="#{idUserCreatedItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{courseController.create}" value="#{bundle.Save}" update="display,:CourseListForm:datalist,:growl" oncomplete="handleSubmit(args,'CourseCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CourseCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

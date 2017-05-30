@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view locale="sq">
+
+    <h:head>
+    
+<!--     	<title>#{bundle.AppName}</title> -->
+    	 <title><h:outputText value="#{bundle['login.title']}" /></title>
+		<link rel="Shortcut Icon" type="image/png" href="#{resource['img:admin.png']}" />
+    
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate" />
+			<meta name="Pragma" content="no-cache" />
+			<meta name="Expires" content="0" />
+			<meta name="X-Content-Type-Options" content="nosniff" />
+			<meta name="Expires" content="nosniff" />
+			<meta name="Strict-Transport-Security" content="max-age=31536000 ; includeSubDomains" />
+			<meta name="X-Frame-Options" content="DENY" />
+        </f:facet>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body>
+        
+        <p:growl id="growl" life="3000" />
+        <div class="Container100 BordBottom BlueBack loginback">
+            <div class="EmptyBox50"></div>
+            
+            <div class="Wid90 MarAuto">
+                <div class="Wid30 DispBlock MarAuto WidAutoOnMobile">
+                    <div class="Card TexAlCenter" style="margin-bottom:-650px;">
+                        <h:graphicImage name="images/logo.png" library="adamantium-layout" style="max-width:120px;"/>
+                        <div class="SeparatorFull"></div>
+                        <div class="Wid100 OvHidden BigTopic"><i class="icon-security DispBlock"></i>#{bundle['AppName']}</div>
+                        <div class="EmptyBox20"></div>
+                        <h:form id="form" >
+                        <div class="Card SoftGrayBack">
+                            <p:inputText id="j_username" placeholder="#{bundle['login.label.username']}" value="#{loginBean.username}" required="true"  styleClass="Wid90 TexAlCenter"/>
+                            <div class="EmptyBox10"></div>
+                            <p:password id="j_password" placeholder="#{bundle['login.label.password']}" value="#{loginBean.password}" required="true" styleClass="Wid90 TexAlCenter"/>
+                            <div class="EmptyBox30"></div>
+                            <p:commandButton value="#{bundle['login.title.login']}" update="form" icon="fa fa-sign-in" action="#{loginBean.login}"  styleClass="CyanButton"/>
+                            <div class="EmptyBox10 ShowOnMobile"></div>
+                        </div>
+                        </h:form>
+                        <div class="EmptyBox20"></div>
+                        <div class="Separator"></div>
+                        <div class="EmptyBox20"></div>
+                        <div class="Card SoftGrayBack">
+                            <div class="Wid100">
+                                              <span class="DispInlBlock FontSourceSansLight BoldGray Fs12 Fcenter HoverEffect TexAlRight FloatNoneOnMobile"> Copyright © 2017 UniSystems S.A.</span>
+
+                            </div>
+                            <div class="EmptyBox10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="EmptyBox10"></div>
+        </div>
+        
+        <h:outputStylesheet name="css/core-layout.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/animate.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/adamantium-font.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/adamantium-layout.css" library="adamantium-layout" />
+    </h:body>
+</f:view>
+</html>
