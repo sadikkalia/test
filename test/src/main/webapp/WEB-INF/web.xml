@@ -8,23 +8,10 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>adamantium</param-value>
     </context-param>
-
     <context-param>
         <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
         <param-value>/WEB-INF/primefaces-adamantium.taglib.xml</param-value>
     </context-param>
-    <context-param>
-		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Production</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>server</param-value>
-	</context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -34,32 +21,6 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
-    
-    <security-constraint>
-        <display-name>Unsecured</display-name>
-        <web-resource-collection>
-            <web-resource-name>Unsecured area</web-resource-name>
-            <url-pattern>/login.xhtml</url-pattern>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>NONE</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
-    
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>Realm</realm-name>
-        <form-login-config>
-            <form-login-page>/login.xhtml</form-login-page>
-            <form-error-page>/loginerror.xhtml</form-error-page>
-        </form-login-config>
-    </login-config>
-    
     <welcome-file-list>
         <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
@@ -107,4 +68,9 @@
         <extension>svg#fontawesomeregular</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
 </web-app>

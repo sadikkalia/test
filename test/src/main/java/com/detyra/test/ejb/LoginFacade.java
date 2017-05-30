@@ -5,10 +5,13 @@
  */
 package com.detyra.test.ejb;
 
+import com.detyra.test.model.User;
+
 /**
  *
  * @author ahasani
  */
 public interface LoginFacade {
-    public String login(String username, String password);
+    public void login(String username, String password);
+    public void logout();
 }

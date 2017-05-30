@@ -7,12 +7,8 @@ package com.detyra.test.controller;
 
 import com.detyra.test.ejb.LoginFacade;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -31,26 +27,12 @@ public class LoginController {
     public LoginController() {
     }
 
-    public String login() {
-
-        /*FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-
-        if (request.getUserPrincipal() != null) {
-            return "loginsuccess";
-        }
-
-        try {
-            request.login(username, password);
-        } catch (ServletException e) {
-            context.addMessage(null, new FacesMessage("Login failed."));
-            return "/loginerror.xhtml?faces-redirect=true";
-        }
-
-        return "loginsuccess";*/
-    	
-    	return getFacade().login(username, password);
-    	
+    public void login() {
+    	getFacade().login(username, password);
+    }
+    
+    public void logout() {
+        getFacade().logout();
     }
 
     public String getUsername() {
