@@ -1,79 +1,232 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+
     <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-        <h:outputStylesheet library="css" name="jsf.css" />
-        <h:outputScript library="js" name="jsf.js" />
-        <h:outputScript name="js/ripple-effect.js" library="adamantium-layout" />
-        <h:outputScript name="js/perfect-scrollbar.js" library="adamantium-layout" />
-        <h:outputScript name="js/layout.js" library="adamantium-layout" />
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Home</title>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+        <style>
+            #menubutton{height:60px; width:25px; float:left; display:block; text-align:center; cursor:pointer; margin-left:20px;}
+            #menubutton i{color:#fff; font-size:20px; margin:20px auto 0px auto; vertical-align:middle; display:block;}
+            #menubutton:hover i, #menubutton:active i, #menubutton:focus i{color:rgba(255,255,255,0.7);}
+            #menubody{width:270px; height:auto; background-color:#fff; position:absolute; overflow:hidden; border-radius:5px; margin-top:50px; display:none;
+                      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+                      -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+                      -moz-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);}
+            #menubody.active{display:block;}
+            #menubody li{display:block; padding:0px;}
+            #menubody li a{display:block; padding:15px 20px; color:#567a84; font-size:16px;}
+            #menubody li a:hover, #menubody li a:active, #menubody li a:focus{background-color:#f2f2f2;}
+        </style>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="/academicYear/List" value="Show All AcademicYear Items"/>
-        <br />
-        <h:link outcome="/course/List" value="Show All Course Items"/>
-        <br />
-        <h:link outcome="/department/List" value="Show All Department Items"/>
-        <br />
-        <h:link outcome="/examSeason/List" value="Show All ExamSeason Items"/>
-        <br />
-        <h:link outcome="/faculty/List" value="Show All Faculty Items"/>
-        <br />
-        <h:link outcome="/semester/List" value="Show All Semester Items"/>
-        <br />
-        <h:link outcome="/student/List" value="Show All Students"/>
-        <br />
-        <h:link outcome="/user/List" value="Show All User Items"/>
+
+
+
+    <h:body style="margin: 0px; background-color:#fff;" styleClass="BlueBody PopupMenu">
+
+
+        <!-- -->
+
+        <div class="Container100 " id="adamantium-features" style="padding:0px 3rem; box-sizing:border-box;">
+
+            <div class="EmptyBox80"></div>
+
+            <h1 class="FontAdamantiumRegular Fs30 BoldGray TexAlCenter">UNIVERSITETI POLITEKNIK I TIRANES</h1>
+            <p:spacer/><p:spacer/><br/><br/>
+            <div class="EmptyBox30"></div>
+
+            <div class="Wid90 MarAuto">
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-task Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;">
+                                <p:link value="Academic Year" outcome="academicYear/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Academic Years</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-windows Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Courses" outcome="course/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Course List</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-iphone Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Departments" outcome="department/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Departments List</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-heart-fill Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Exam Seasons" outcome="examSeason/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show exam seasons list</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-safe Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Faculties" outcome="faculty/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Faculty List</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-task Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Semesters" outcome="semester/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Semesters List</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-windows Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="Students" outcome="student/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular BoldGray Fs14">Show Student List</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive TexAlCenter">
+                    <div class="ContainerIndent">
+                        <div class="Container100">
+                            <i class="icon-iphone Green Wid100" style="font-size:4rem;"></i>
+                            <div class="Wid100 OvHidden" style="height:2rem;"></div>
+                            <div class="FontAdamantiumSemiBold Red" style="font-size:1.6rem;"><p:link value="University" outcome="university/List"/></div>
+                            <div class="Wid100 OvHidden" style="height:1rem;"></div>
+                            <div class="FontAdamantiumRegular Leaden Fs14">Show University</div>
+                            <div class="Wid100 OvHidden" style="height:3rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="EmptyBox50"></div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="Container100 BoldGrayBack">
+            <div class="Container100" style="border-bottom:solid 1px #5B616B;" id="footerlinks">
+                <div class="ContainerIndent OvHidden">
+                    <a href="http://fti.edu.al/" class="DispInlBlock FontAdamantiumLight White Fs14 Fleft HoverEffect">Fakulteti i Teknologjise se Informacionit</a>
+                    <span class="DispInlBlock Fleft Fs14 White" style="padding:0px 10px;">|</span>
+                    <p:link styleClass="DispInlBlock FontAdamantiumLight White Fs14 Fleft HoverEffect" value="SITEMAP" outcome="index.xhtml"></p:link>
+                    <span class="DispInlBlock Fleft Fs14 White" style="padding:0px 10px;">|</span>
+
+                </div>
+            </div>
+
+        </div>
 
         <h:outputStylesheet name="css/core-layout.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/animate.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/adamantium-font.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/ripple-effect.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/perfect-scrollbar.css" library="adamantium-layout" />
         <h:outputStylesheet name="css/font-awesome.css" library="adamantium-layout" />
+        <h:outputStylesheet name="css/animate.css" library="adamantium-layout" />
         <h:outputStylesheet name="css/adamantium-layout.css" library="adamantium-layout" />
-        <h:outputStylesheet library="css" name="custom.css" />
-        <br />
-        <h:link outcome="/student/List" value="Show All Student Items"/>
+        <h:outputStylesheet name="css/adamantium-font.css" library="adamantium-layout" />
 
+        <script>
+            // FNC for detecting for click outside of any elements ============== 
+            $.fn.clickOff = function (callback, selfDestroy) {
+                var clicked = false;
+                var parent = this;
+                var destroy = selfDestroy || true;
+
+                parent.click(function () {
+                    clicked = true;
+                });
+
+                $(document).click(function (event) {
+                    if (!clicked) {
+                        callback(parent, event);
+                    }
+                    if (destroy) {
+                    }
+                    ;
+                    clicked = false;
+                });
+            };
+
+            var menubtn = $(document.getElementById("menubutton")),
+                    menubody = $(document.getElementById("menubody")),
+                    menustatus = true,
+                    menuButtonClick = false;
+
+            menubtn.on("click", function () {
+                menuButtonClick = true;
+
+                if (menustatus) {
+                    menubody.addClass('active');
+                    menustatus = false;
+                } else {
+                    menubody.removeClass('active');
+                    menustatus = true;
+                }
+            });
+
+            menubody.clickOff(function (e) {
+                if (menuButtonClick) {
+                    menuButtonClick = false;
+                } else {
+                    menubody.removeClass('active');
+                    menustatus = true;
+                }
+            });
+        </script>
     </h:body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
-
