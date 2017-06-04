@@ -69,13 +69,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDepartmentTitle_idUserCreated}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUserCreated}"/>
+                            <h:outputText value="#{item.idUserCreated.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDepartmentTitle_idFaculty}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idFaculty}"/>
+                            <h:outputText value="#{item.idFaculty.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{departmentController.prepareCreate}" update=":DepartmentCreateForm" oncomplete="PF('DepartmentCreateDialog').show()"/>

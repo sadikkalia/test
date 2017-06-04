@@ -48,7 +48,7 @@ public class LoginFacadeImpl implements LoginFacade {
 
                 HttpSession session = (HttpSession) ec.getSession(false);
                 session.setAttribute("user", username);
-                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+                ec.redirect(ec.getRequestContextPath() + "/dashboard.xhtml");
             }
         } catch (IOException ex) {
             Logger.getLogger(LoginFacadeImpl.class.getName()).log(Level.SEVERE, null, ex);

@@ -35,7 +35,6 @@ public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "course_id")
     private Integer courseId;
     @Size(max = 100)
@@ -56,6 +55,10 @@ public class Course implements Serializable {
     @JoinColumn(name = "id_user_created", referencedColumnName = "user_id")
     @ManyToOne
     private User idUserCreated;
+    
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     public Course() {
     }
@@ -154,6 +157,14 @@ public class Course implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override

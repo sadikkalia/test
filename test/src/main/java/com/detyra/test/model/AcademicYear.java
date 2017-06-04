@@ -8,6 +8,7 @@ package com.detyra.test.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,6 +60,9 @@ public class AcademicYear implements Serializable {
     private User idUserCreated;
     @OneToMany(mappedBy = "idAcademicYear")
     private Collection<Semester> semesterCollection;
+    
+    @OneToMany(mappedBy = "academicYear")
+    private List<Student> students;
 
     public AcademicYear() {
     }
@@ -139,6 +143,16 @@ public class AcademicYear implements Serializable {
         this.semesterCollection = semesterCollection;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -161,7 +175,7 @@ public class AcademicYear implements Serializable {
 
     @Override
     public String toString() {
-        return "com.detyra.test.AcademicYear[ academicYearId=" + academicYearId + " ]";
+        return description;
     }
     
 }

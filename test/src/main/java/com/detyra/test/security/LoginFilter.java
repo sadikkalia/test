@@ -6,6 +6,7 @@
 package com.detyra.test.security;
 
 import java.io.IOException;
+import javax.faces.application.ResourceHandler;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -33,8 +34,14 @@ public class LoginFilter implements Filter {
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean resourceRequest = request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
-        if (loggedIn || loginRequest) {
+        if (loggedIn || loginRequest || resourceRequest) {
+            if (!resourceRequest) {
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+                response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+                response.setDateHeader("Expires", 0); // Proxies.
+            }
             chain.doFilter(request, response);
         } else {
             response.sendRedirect(loginURI);

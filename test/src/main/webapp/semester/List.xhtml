@@ -85,13 +85,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSemesterTitle_idAcademicYear}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idAcademicYear}"/>
+                            <h:outputText value="#{item.idAcademicYear.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSemesterTitle_idUserCreated}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUserCreated}"/>
+                            <h:outputText value="#{item.idUserCreated.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{semesterController.prepareCreate}" update=":SemesterCreateForm" oncomplete="PF('SemesterCreateDialog').show()"/>

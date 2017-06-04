@@ -7,6 +7,7 @@ package com.detyra.test.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
@@ -54,6 +56,9 @@ public class Department implements Serializable {
     @JoinColumn(name = "id_faculty", referencedColumnName = "faculty_id")
     @ManyToOne
     private Faculty idFaculty;
+    
+    @OneToMany(mappedBy = "department")
+    private List<Student> students;
 
     public Department() {
     }
@@ -146,9 +151,19 @@ public class Department implements Serializable {
         return true;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "com.detyra.test.Department[ departmentId=" + departmentId + " ]";
+        return departmentName;
     }
     
 }

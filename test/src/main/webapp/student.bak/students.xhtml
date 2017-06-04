@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="subheader">
+            <title>Students</title>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card">
+                        <div class="CardTopic">
+                            <i class="icon-windows Fs30 Fleft MarRight10 "></i>Students
+                        </div>
+                        <div class="SeparatorFull"></div>
+                        <h:form id="surveyListForm">
+                            <p:dataTable id="studentList" var="student"
+                                         value="#{studentController.students}" selectionMode="single"
+                                         selection="#{surveyController.selected}" paginator="true"
+                                         scrollable="true" rowKey="#{student.id}" rows="10"
+                                         style="text-align:center" rowsPerPageTemplate="10,20,30,40,50">
+                                <f:facet name="header">Students</f:facet>
+
+                                
+
+                                <p:column headerText="Name" sortable="true"
+                                          sortBy="#{student.name}" filterBy="#{student.name}">
+                                    <h:outputText value="#{student.name}" />
+                                </p:column>
+                                <p:column headerText="Surname" sortable="true"
+                                          sortBy="#{student.surname}">
+                                    <h:outputText value="#{student.surname}" />
+                                </p:column>
+                                <p:column headerText="Email" sortable="true"
+                                          sortBy="#{student.email}">
+                                    <h:outputText value="#{student.email}" />
+                                </p:column>
+                                <p:column headerText="Course">
+                                    <h:outputText value="#{student.email}" />
+                                </p:column>
+                                <p:column headerText="Department">
+                                    <h:outputText value="#{student.email}" />
+                                </p:column>
+                                <p:column headerText="Academic Year">
+                                    <h:outputText value="#{student.email}" />
+                                </p:column>
+                                
+                                <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{studentController.prepareCreate}" update=":StudentCreateForm" oncomplete="PF('StudentCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":UserViewForm" oncomplete="PF('UserViewDialog').show()" disabled="#{empty userController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":UserEditForm" oncomplete="PF('UserEditDialog').show()" disabled="#{empty userController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{userController.destroy}" update=":growl,datalist" disabled="#{empty userController.selected}"/>
+                        </f:facet>
+
+                                
+                            </p:dataTable>
+                           
+                            
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

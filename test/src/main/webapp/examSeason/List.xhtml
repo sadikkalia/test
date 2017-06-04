@@ -85,19 +85,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListExamSeasonTitle_idAcademicYear}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idAcademicYear}"/>
+                            <h:outputText value="#{item.idAcademicYear.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListExamSeasonTitle_idSemester}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idSemester}"/>
+                            <h:outputText value="#{item.idSemester.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListExamSeasonTitle_idUserCreated}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUserCreated}"/>
+                            <h:outputText value="#{item.idUserCreated.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{examSeasonController.prepareCreate}" update=":ExamSeasonCreateForm" oncomplete="PF('ExamSeasonCreateDialog').show()"/>

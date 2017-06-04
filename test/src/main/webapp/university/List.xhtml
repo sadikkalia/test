@@ -57,7 +57,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUniversityTitle_idUserCreated}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUserCreated}"/>
+                            <h:outputText value="#{item.idUserCreated.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{universityController.prepareCreate}" update=":UniversityCreateForm" oncomplete="PF('UniversityCreateDialog').show()"/>

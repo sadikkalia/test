@@ -188,7 +188,7 @@ public class Faculty implements Serializable {
 
     @Override
     public String toString() {
-        return "com.detyra.test.Faculty[ facultyId=" + facultyId + " ]";
+        return facultyName;
     }
     
 }

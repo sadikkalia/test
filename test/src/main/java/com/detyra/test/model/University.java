@@ -128,7 +128,7 @@ public class University implements Serializable {
 
     @Override
     public String toString() {
-        return "com.detyra.test.University[ universityId=" + universityId + " ]";
+        return universityName;
     }
     
 }

@@ -81,7 +81,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFacultyTitle_idUniversity}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUniversity}"/>
+                            <h:outputText value="#{item.idUniversity.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{facultyController.prepareCreate}" update=":FacultyCreateForm" oncomplete="PF('FacultyCreateDialog').show()"/>

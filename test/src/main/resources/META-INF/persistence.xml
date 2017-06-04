@@ -3,6 +3,11 @@
   <persistence-unit name="com.detyra_test_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>java:/jboss/datasources/uptDB</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+        <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+         <property name="hibernate.discriminator.ignore_explicit_for_joined" value="true" />
+         <property name="hibernate.hbm2ddl.auto" value="update" />
+    </properties>
   </persistence-unit>
 </persistence>

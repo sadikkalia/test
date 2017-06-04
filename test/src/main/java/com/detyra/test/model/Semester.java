@@ -181,7 +181,7 @@ public class Semester implements Serializable {
 
     @Override
     public String toString() {
-        return "com.detyra.test.Semester[ semesterId=" + semesterId + " ]";
+        return semesterName + " - " + idAcademicYear;
     }
     
 }

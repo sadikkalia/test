@@ -309,7 +309,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.detyra.test.User[ userId=" + userId + " ]";
+        return name;
     }
     
 }
